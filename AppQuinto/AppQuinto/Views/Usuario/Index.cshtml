@@ -1,0 +1,48 @@
+﻿@model IEnumerable<AppQuinto.Models.Usuario>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Lista de Usuarios</h1>
+
+<div class="table-responsive">
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th scope="col"> @Html.DisplayNameFor(model => model.idUsu) </th>
+                <th scope="col"> @Html.DisplayNameFor(model => model.nomeUsu) </th>
+                <th scope="col"> @Html.DisplayNameFor(model => model.Cargo)  </th>
+                <th scope="col"> @Html.DisplayNameFor(model => model.DataNasc) </th>
+                <th scope="col">Ação</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (Usuario usuario in Model) 
+            {
+                <tr>
+                    <td>@usuario.idUsu)</td>
+                    <td>@usuario.nomeUsu</td>
+                    <td>@usuario.Cargo</td>
+                    <td>@usuario.DataNasc.ToString("dd/MM/yyyy")</td>
+                    <td>
+                        <button type="button" class="btn btn-warning botaoatualiza">
+                             @Html.ActionLink("Editar", "AtualizarUsuario", new { id = usuario.idUsu })
+                        </button>
+
+                        <button type="button" class="btn btn-secondary botaodetalhes">
+                            @Html.ActionLink("Detalhes", "DetalhesUsuario", new { id = usuario.idUsu })
+                         </button>
+
+                        <button type="button" class="btn btn-danger botaoexcluir">
+                            @Html.ActionLink("Excluir", "ExcluirUsuario", new { id = usuario.idUsu },
+                                        new { onclick = "return confirm('Deseja realmente desativar?');"})
+                        </button>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+<p><a class="btn btn-primary" asp-action="CadastrarUsuario" asp-controller="Usuario">Cadastrar</a></p>

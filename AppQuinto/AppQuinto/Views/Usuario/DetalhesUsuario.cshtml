@@ -1,0 +1,34 @@
+﻿@model AppQuinto.Models.Usuario
+
+@{
+    ViewData["Title"] = "DetalhesUsuario";
+}
+
+<h1>Detalhes do Usuario</h1>
+<br />
+<div>
+    <h4>Usuario</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2"> @Html.DisplayNameFor(model => model.idUsu) </dt>
+        <dd class="col-sm-10"> @Html.DisplayFor(model => model.idUsu)  </dd>
+            
+        <dt class="col-sm-2">  @Html.DisplayNameFor(model => model.nomeUsu)  </dt>
+        <dd class="col-sm-10"> @Html.DisplayFor(model => model.nomeUsu) </dd>
+            
+        <dt class="col-sm-2"> @Html.DisplayNameFor(model => model.Cargo) </dt>
+        <dd class="col-sm-10"> @Html.DisplayFor(model => model.Cargo)</dd>
+
+        <dt class = "col-sm-2">@Html.DisplayNameFor(model => model.DataNasc)</dt>
+        <dd class = "col-sm-10">@Html.DisplayFor(model => model.DataNasc) </dd>
+    </dl>
+</div>
+<br />
+<div>
+    <button type="button" class="btn btn-warning">
+        @Html.ActionLink("Editar", "AtualizarUsuario", new { id = Model.idUsu})
+    </button>
+    <button type="button" class="btn btn-secondary">
+        @Html.ActionLink("Voltar", "Index")
+    </button>
+</div>
